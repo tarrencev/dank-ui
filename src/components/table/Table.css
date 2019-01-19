@@ -1,0 +1,14 @@
+.table .table-cell.width-50 {
+  flex-basis: 50px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.table .table-cell.align-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.table .table-cell.grow {
+  flex-grow: 1;
+}
