@@ -1,6 +1,6 @@
 import React from "react";
 import ReactPopup from "reactjs-popup";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const Container = styled.div`
   margin: 15px 20px;

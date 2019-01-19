@@ -1,5 +1,5 @@
 import React, { Children, Fragment } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import CaretIcon from "../icons/CaretIcon";
 
 const Container = styled.div`

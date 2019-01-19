@@ -1,4 +1,4 @@
 import { Tabs } from "react-tabs";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export default styled(Tabs)``;

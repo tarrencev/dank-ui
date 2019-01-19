@@ -1,6 +1,6 @@
 import React, { Component, Children, cloneElement } from "react";
 import { Range } from "immutable";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import onClickOutside from "react-onclickoutside";
 
 import TableHeader from "./TableHeader";

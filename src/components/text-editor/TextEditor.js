@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { draftToMarkdown, markdownToDraft } from "markdown-draft-js";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Tabs } from "react-tabs";
 
 import Tab from "./EditorTab";

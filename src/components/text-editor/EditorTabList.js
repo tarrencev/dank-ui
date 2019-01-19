@@ -1,5 +1,5 @@
 import { TabList } from "react-tabs";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const EditorTabList = styled(TabList)`
   display: flex;

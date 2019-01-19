@@ -1,6 +1,6 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { Button as SmoothButton } from "smooth-ui";
+import styled from "@emotion/styled";
+import { Button as SmoothButton } from "@smooth-ui/core-em";
 
 import Spinner from "../spinner/Spinner";
 

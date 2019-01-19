@@ -1,3 +1,3 @@
-import { Input as SmoothInput } from "smooth-ui";
+import { Input as SmoothInput } from "@smooth-ui/core-em";
 import adapt from "../../utils/adapt";
 export default adapt(SmoothInput);
