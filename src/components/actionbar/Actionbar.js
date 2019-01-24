@@ -6,7 +6,6 @@ const Wrapper = styled.div`
   display: flex;
   height: 75px;
   flex-shrink: 0;
-  margin: 25px 30px 5px 5px;
 `;
 
 const Spacer = styled.div`

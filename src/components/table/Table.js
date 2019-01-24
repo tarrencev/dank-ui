@@ -21,7 +21,14 @@ const StyledTableBody = styled.div`
   overflow: auto;
 `;
 
-function renderRow(data, children, index, onRowClick, onRowDoubleClick, isSelected) {
+function renderRow(
+  data,
+  children,
+  index,
+  onRowClick,
+  onRowDoubleClick,
+  isSelected
+) {
   return (
     <TableRow
       data={data}
@@ -43,9 +50,16 @@ function renderRow(data, children, index, onRowClick, onRowDoubleClick, isSelect
 }
 
 function renderBody(data, children, onRowClick, onRowDoubleClick, selectedRow) {
-  const range = new Range(0, data.size);
+  const range = new Range(0, data && data.size ? data.size : 0);
   return range.map(index =>
-    renderRow(data, children, index, onRowClick, onRowDoubleClick, selectedRow === index)
+    renderRow(
+      data,
+      children,
+      index,
+      onRowClick,
+      onRowDoubleClick,
+      selectedRow === index
+    )
   );
 }
 
@@ -57,12 +71,24 @@ class Table extends Component {
   };
 
   render() {
-    const { children, data, onRowClick, onRowDoubleClick, selectedRow } = this.props;
+    const {
+      children,
+      data,
+      onRowClick,
+      onRowDoubleClick,
+      selectedRow
+    } = this.props;
     return (
       <StyledTable className="table">
         <TableHeader children={children} />
         <StyledTableBody className="table-body">
-          {renderBody(data, children, onRowClick, onRowDoubleClick, selectedRow)}
+          {renderBody(
+            data,
+            children,
+            onRowClick,
+            onRowDoubleClick,
+            selectedRow
+          )}
         </StyledTableBody>
       </StyledTable>
     );

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import styled from "@emotion/styled";
 
-class Tab extends Component {
+const Tab = styled.li`
+  display: none;
+`;
+
+export default class extends Component {
   onClick = () => {
     const { label, onClick } = this.props;
     onClick(label);
@@ -19,11 +24,9 @@ class Tab extends Component {
     }
 
     return (
-      <li className={className} onClick={onClick}>
+      <Tab className={className} onClick={onClick}>
         {label}
-      </li>
+      </Tab>
     );
   }
 }
-
-export default Tab;

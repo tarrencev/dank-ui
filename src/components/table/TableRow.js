@@ -5,6 +5,7 @@ const StyledTableRow = styled.div`
   align-items: center;
   border-bottom: 1px solid #d4d4d4;
   display: flex;
+  height: 54px;
 
   &.is-selectable {
     cursor: pointer;

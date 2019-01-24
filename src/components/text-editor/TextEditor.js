@@ -1,23 +1,41 @@
 import React, { Component } from "react";
 import { draftToMarkdown, markdownToDraft } from "markdown-draft-js";
 import styled from "@emotion/styled";
-import { Tabs } from "react-tabs";
 
-import Tab from "./EditorTab";
-import TabList from "./EditorTabList";
-import TabPanel from "./EditorTabPanel";
+import Tabs from "./Tabs";
+import Tab from "./Tab";
 
 const Container = styled.div`
   border-style: solid;
   border-radius: 0.25rem;
   border-width: 1px;
-  border-color: #e1e1e1;
+  border-color: ${props =>
+    !props.hasOwnProperty("valid")
+      ? "#e1e1e1"
+      : props.valid
+        ? "#28a745"
+        : "#dc3545"};
+
+  transition: color 0.2s ease-in-out, border-style 0.2s ease-in-out,
+    visibility 0.2s ease-in-out, background 0.2s ease-in-out,
+    background-color 0.2s ease-in-out, text-decoration 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+
+  &:focus-within {
+    box-shadow: ${props =>
+      !props.hasOwnProperty("valid")
+        ? "none"
+        : props.valid
+          ? "0 0 0 0.2rem rgba(40,167,69,0.25)"
+          : "0 0 0 0.2rem rgba(220, 53, 69, 0.25)"};
+  }
 
   .RichEditor-root {
     background: #fff;
-    font-family: "Georgia", serif;
     font-size: 14px;
     padding: 15px;
+    border-radius: 0.25rem;
   }
 
   .RichEditor-editor {
@@ -223,8 +241,15 @@ export default class TextEditor extends Component {
     super(props);
     this.state = {
       editorState: EditorState.createEmpty(decorator),
-      markdown: ""
+      markdown: "",
+      editor: false
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      editor: true
+    });
   }
 
   handleKeyCommand = command => {
@@ -286,20 +311,17 @@ export default class TextEditor extends Component {
   render() {
     const {
       className = "",
+      allowInputToggle = false,
       input,
       meta: { valid },
       ...rest
     } = this.props;
-    const { editorState } = this.state;
+    const { editorState, editor } = this.state;
 
     return (
-      <Container>
+      <Container valid={valid}>
         <Tabs>
-          <TabList>
-            <Tab>Rich Text</Tab>
-            <Tab>Plain Text</Tab>
-          </TabList>
-          <TabPanel>
+          <Tab label="Rich">
             <div className="editor RichEditor-root">
               <BlockStyleControls
                 editorState={editorState}
@@ -310,16 +332,19 @@ export default class TextEditor extends Component {
                 onToggle={this.toggleInlineStyle}
               />
               <div className="RichEditor-editor">
-                <Editor
-                  editorState={editorState}
-                  handleKeyCommand={this.handleKeyCommand}
-                  onChange={this.onChange}
-                  onTab={this.onTab}
-                />
+                {editor && (
+                  <Editor
+                    editorKey="editor"
+                    editorState={editorState}
+                    handleKeyCommand={this.handleKeyCommand}
+                    onChange={this.onChange}
+                    onTab={this.onTab}
+                  />
+                )}
               </div>
             </div>
-          </TabPanel>
-          <TabPanel>
+          </Tab>
+          <Tab label="Raw">
             <div className="markdown-results">
               <textarea
                 className="RichEditor-textarea"
@@ -327,7 +352,7 @@ export default class TextEditor extends Component {
                 value={this.state.markdown}
               />
             </div>
-          </TabPanel>
+          </Tab>
         </Tabs>
       </Container>
     );

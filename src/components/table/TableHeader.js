@@ -4,9 +4,12 @@ import styled from "@emotion/styled";
 import TableCell from "./TableCell";
 
 const StyledTableHeader = styled.div`
-  color: #525252;
-  font-weight: 300;
-  letter-spacing: 1.1px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #95aac9;
+  border-bottom-width: 1px;
+  background-color: #f9fbfd;
   line-height: 19px;
 
   .table-cell {
