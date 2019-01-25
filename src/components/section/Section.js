@@ -2,12 +2,12 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const StyledSection = styled.section`
-  border-bottom: 1px solid #f1f1f1;
   margin: 20px 0;
 `;
 
 const StyledSectionTitle = styled.div`
-  color: #5f5f5f;
+  color: #000;
+  font-size: 17px;
   font-weight: 400;
   display: flex;
   justify-content: space-between;
@@ -15,6 +15,8 @@ const StyledSectionTitle = styled.div`
 `;
 
 const StyledSectionContent = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 18px 0;
 `;
 

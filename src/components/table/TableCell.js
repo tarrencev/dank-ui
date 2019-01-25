@@ -7,8 +7,7 @@ const StyledTableCell = styled.div`
   flex: 1;
   font-size: 14px;
   overflow: hidden;
-  margin: 0 5px;
-  padding: 10px 5px;
+  padding: 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
