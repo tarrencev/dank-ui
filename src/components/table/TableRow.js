@@ -2,10 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const StyledTableRow = styled.div`
-  align-items: center;
-  border-bottom: 1px solid #d4d4d4;
-  display: flex;
-  height: 54px;
+  display: contents;
 
   &.is-selectable {
     cursor: pointer;

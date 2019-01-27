@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const StyledTableCell = styled.div`
+export default styled.div`
   color: #424242;
   align-items: center;
   flex: 1;
@@ -11,13 +11,3 @@ const StyledTableCell = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
-
-const TableCell = ({ className = "", children }) => (
-  <StyledTableCell className={`table-cell ${className}`}>
-    {children}
-  </StyledTableCell>
-);
-
-TableCell.displayName = "TableCell";
-
-export default TableCell;

@@ -3,39 +3,27 @@ import styled from "@emotion/styled";
 
 import TableCell from "./TableCell";
 
-const StyledTableHeader = styled.div`
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #95aac9;
-  border-bottom-width: 1px;
-  background-color: #f9fbfd;
-  line-height: 19px;
-
-  .table-cell {
-    font-size: 12px;
+const StyledTableCell = styled(TableCell)`
+  &[role="columnheader"] {
+    position: sticky;
+    top: 0;
+    padding: 8px 5px;
+    border-bottom: 1px solid #e3e4e4;
+    background-color: #fff;
   }
-`;
-
-const StyledTableRow = styled.div`
-  align-items: center;
-  border-bottom: 1px solid #d4d4d4;
-  display: flex;
 `;
 
 function renderHeaderCell(child) {
   const { className, header } = child.props;
-  return <TableCell className={className}>{header}</TableCell>;
+  return (
+    <StyledTableCell role="columnheader" className={className}>
+      {header}
+    </StyledTableCell>
+  );
 }
 
 const TableHeader = ({ children }) => {
-  return (
-    <StyledTableHeader className="table-header">
-      <StyledTableRow className="table-row">
-        {Children.map(children, renderHeaderCell)}
-      </StyledTableRow>
-    </StyledTableHeader>
-  );
+  return Children.map(children, renderHeaderCell);
 };
 
 TableHeader.displayName = "TableHeader";

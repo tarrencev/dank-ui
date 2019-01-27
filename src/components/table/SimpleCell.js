@@ -2,13 +2,13 @@ import React from "react";
 
 import TableCell from "./TableCell";
 
-const SimpleCell = ({ className = "", col, data, rowIndex }) => {
+const SimpleCell = ({ rowIndex, col, data }) => {
   return (
-    <TableCell className={className} key={rowIndex}>
+    <div>
       {col.hasOwnProperty("length")
         ? data.get(rowIndex).getIn(col)
         : data.get(rowIndex).get(col)}
-    </TableCell>
+    </div>
   );
 };
 

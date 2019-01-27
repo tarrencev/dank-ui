@@ -3,6 +3,7 @@ import { Range } from "immutable";
 import styled from "@emotion/styled";
 import onClickOutside from "react-onclickoutside";
 
+import TableCell from "./TableCell";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 
@@ -10,6 +11,25 @@ const StyledTable = styled.div`
   position: relative;
   width: 100%;
   padding-bottom: 100px;
+
+  grid-template-columns: auto auto;
+
+  &[role="grid"] {
+    width: 100%;
+    display: grid;
+    font-size: 1em;
+    overflow-y: auto;
+  }
+
+  &[role="gridcell"] {
+    align-items: center;
+    border-bottom: 1px solid #d4d4d4;
+    height: 54px;
+  }
+
+  .odd {
+    background-color: #f5f5f5;
+  }
 `;
 
 const StyledTableBody = styled.div`
@@ -38,13 +58,19 @@ function renderRow(
       onDoubleClick={onRowDoubleClick}
       isSelected={isSelected}
     >
-      {Children.map(children, column =>
-        cloneElement(column.props.cell, {
-          ...column.props.cell.props,
-          data,
-          rowIndex: index
-        })
-      )}
+      {Children.map(children, column => (
+        <TableCell
+          role="gridcell"
+          className={index % 2 == 0 ? "even" : "odd"}
+          key={index}
+        >
+          {cloneElement(column.props.cell, {
+            ...column.props.cell.props,
+            rowIndex: index,
+            data
+          })}
+        </TableCell>
+      ))}
     </TableRow>
   );
 }
@@ -79,17 +105,9 @@ class Table extends Component {
       selectedRow
     } = this.props;
     return (
-      <StyledTable className="table">
+      <StyledTable role="grid" className="table">
         <TableHeader children={children} />
-        <StyledTableBody className="table-body">
-          {renderBody(
-            data,
-            children,
-            onRowClick,
-            onRowDoubleClick,
-            selectedRow
-          )}
-        </StyledTableBody>
+        {renderBody(data, children, onRowClick, onRowDoubleClick, selectedRow)}
       </StyledTable>
     );
   }
