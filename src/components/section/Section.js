@@ -20,11 +20,15 @@ const StyledSectionContent = styled.div`
   margin: 18px 0;
 `;
 
+const StyledTitleRight = styled.div`
+  display: flex;
+`;
+
 const Section = ({ className = "", children, title, right }) => (
   <StyledSection className={`section ${className}`}>
     <StyledSectionTitle className="section-title">
       <div>{title}</div>
-      <div>{right}</div>
+      <StyledTitleRight>{right}</StyledTitleRight>
     </StyledSectionTitle>
     <StyledSectionContent className="section-content">
       {children}

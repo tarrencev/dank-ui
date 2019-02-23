@@ -26,6 +26,7 @@
     "@emotion/styled": "^10.0.6",
     "@smooth-ui/core-em": "^8.0.1",
     "bignumber.js": "^6.0.0",
+    "cleave.js": "^1.4.7",
     "draft-js": "^0.10.5",
     "draft-js-export-markdown": "^1.2.0",
     "draft-js-inline-toolbar-plugin": "^3.0.0",
