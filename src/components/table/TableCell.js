@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 export default styled.div`
   color: #424242;
+  display: flex;
   align-items: center;
   flex: 1;
   font-size: 14px;

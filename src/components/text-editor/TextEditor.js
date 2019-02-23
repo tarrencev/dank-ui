@@ -239,8 +239,15 @@ const InlineStyleControls = props => {
 export default class TextEditor extends Component {
   constructor(props) {
     super(props);
+    const {
+      input: { value = "" }
+    } = props;
+
     this.state = {
-      editorState: EditorState.createEmpty(decorator),
+      editorState: EditorState.createWithContent(
+        ContentState.createFromText(value),
+        decorator
+      ),
       markdown: "",
       editor: false
     };

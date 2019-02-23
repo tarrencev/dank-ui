@@ -12,7 +12,12 @@ const StyledTable = styled.div`
   width: 100%;
   padding-bottom: 100px;
 
-  grid-template-columns: auto auto;
+  grid-template-columns: ${props =>
+    props.view === "card"
+      ? "repeat(auto-fill, 186px)"
+      : Array(props.columns)
+          .fill("auto")
+          .join(" ")};
 
   &[role="grid"] {
     width: 100%;
@@ -21,14 +26,19 @@ const StyledTable = styled.div`
     overflow-y: auto;
   }
 
-  &[role="gridcell"] {
+  [role="gridcell"] {
     align-items: center;
-    border-bottom: 1px solid #d4d4d4;
+    border: 1px solid rgba(0, 0, 0, 0);
     height: 54px;
+
+    &:focus-within {
+      border: 1px solid tomato;
+      border-radius: 2px;
+    }
   }
 
   .odd {
-    background-color: #f5f5f5;
+    background-color: #f9f9f9;
   }
 `;
 
@@ -102,10 +112,16 @@ class Table extends Component {
       data,
       onRowClick,
       onRowDoubleClick,
-      selectedRow
+      selectedRow,
+      view = "list"
     } = this.props;
+
     return (
-      <StyledTable role="grid" className="table">
+      <StyledTable
+        role="grid"
+        className="table"
+        columns={Children.toArray(children).length}
+      >
         <TableHeader children={children} />
         {renderBody(data, children, onRowClick, onRowDoubleClick, selectedRow)}
       </StyledTable>

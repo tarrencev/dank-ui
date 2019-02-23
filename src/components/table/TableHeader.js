@@ -10,6 +10,7 @@ const StyledTableCell = styled(TableCell)`
     padding: 8px 5px;
     border-bottom: 1px solid #e3e4e4;
     background-color: #fff;
+    height: 40px;
   }
 `;
 
