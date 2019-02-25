@@ -12,12 +12,7 @@ const StyledTable = styled.div`
   width: 100%;
   padding-bottom: 100px;
 
-  grid-template-columns: ${props =>
-    props.view === "card"
-      ? "repeat(auto-fill, 186px)"
-      : Array(props.columns)
-          .fill("auto")
-          .join(" ")};
+  grid-template-columns: ${props => props.gridTemplateColumns};
 
   &[role="grid"] {
     width: 100%;
@@ -73,6 +68,9 @@ function renderRow(
           role="gridcell"
           className={index % 2 == 0 ? "even" : "odd"}
           key={index}
+          style={{
+            visibility: column.props.isHidden ? "hidden" : "inherit"
+          }}
         >
           {cloneElement(column.props.cell, {
             ...column.props.cell.props,
@@ -110,17 +108,17 @@ class Table extends Component {
     const {
       children,
       data,
+      gridTemplateColumns,
       onRowClick,
       onRowDoubleClick,
-      selectedRow,
-      view = "list"
+      selectedRow
     } = this.props;
 
     return (
       <StyledTable
         role="grid"
         className="table"
-        columns={Children.toArray(children).length}
+        gridTemplateColumns={gridTemplateColumns}
       >
         <TableHeader children={children} />
         {renderBody(data, children, onRowClick, onRowDoubleClick, selectedRow)}

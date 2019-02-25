@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import adapt from "../../utils/adapt";
 
 const Input = styled.input`
   width: 100%;
@@ -19,4 +20,4 @@ const InputCell = ({ children, col, isEditing, data, rowIndex, ...rest }) => (
 
 InputCell.displayName = "InputCell";
 
-export default InputCell;
+export default adapt(InputCell);

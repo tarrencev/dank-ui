@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
+import adapt from "../../utils/adapt";
 
 const SelectStyle = styled.div`
   position: relative;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   display: flex;
@@ -17,6 +19,7 @@ const SelectStyle = styled.div`
 `;
 
 const Select = styled.select`
+  height: 100%;
   width: 100%;
   border: none;
   box-shadow: none;
@@ -47,4 +50,4 @@ const SelectCell = ({ children, col, isEditing, data, rowIndex, ...rest }) => (
 
 SelectCell.displayName = "SelectCell";
 
-export default SelectCell;
+export default adapt(SelectCell);

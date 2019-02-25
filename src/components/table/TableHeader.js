@@ -11,13 +11,21 @@ const StyledTableCell = styled(TableCell)`
     border-bottom: 1px solid #e3e4e4;
     background-color: #fff;
     height: 40px;
+    z-index: 1;
   }
 `;
 
 function renderHeaderCell(child) {
-  const { className, header } = child.props;
+  const { className, isHidden, header, ...rest } = child.props;
   return (
-    <StyledTableCell role="columnheader" className={className}>
+    <StyledTableCell
+      role="columnheader"
+      className={className}
+      style={{
+        visibility: isHidden ? "hidden" : "inherit"
+      }}
+      {...rest}
+    >
       {header}
     </StyledTableCell>
   );
